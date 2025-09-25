@@ -9,10 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.chat.AppConstants;
 import com.chat.Model.Message;
 import com.chat.Model.Room;
 import com.chat.Repository.RoomRepository;
+import com.chat.AppConstants;
 
 @RequestMapping("/api/v1/rooms")
 @RestController
@@ -28,7 +28,6 @@ public class RoomController {
         if (roomId == null || roomId.isEmpty()) {
             return ResponseEntity.badRequest().body("Room ID cannot be empty!");
         }
-
         if (roomRepo.findByRoomId(roomId).isPresent()) {
             return ResponseEntity.badRequest().body("Room Already Exists!");
         }
